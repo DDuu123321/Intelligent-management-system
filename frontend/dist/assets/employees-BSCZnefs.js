@@ -1,0 +1,1 @@
+import{r as t}from"./request-RQfx8Tvg.js";const r=e=>t.get("/employees",{params:e}),p=e=>t.post("/employees",e),l=(e,o)=>t.put(`/employees/${e}`,o),m=e=>t.delete(`/employees/${e}`);export{p as c,m as d,r as g,l as u};

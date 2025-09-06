@@ -1,0 +1,1 @@
+import{r}from"./request-RQfx8Tvg.js";const c=e=>r.get("/qrcode",{params:e}),s=e=>r.post("/qrcode",e),n=(e,t)=>r.put(`/qrcode/${e}`,t),a=e=>r.get(`/qrcode/scan/${e}`),d=(e,t)=>r.post(`/qrcode/checkin/${e}`,t);export{s as a,d as c,c as g,a as s,n as u};
