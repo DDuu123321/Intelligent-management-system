@@ -56,6 +56,7 @@ A modern employee attendance and vehicle monitoring management system built with
 
 ## Project Structure
 
+```
 monitoring-system/
 ├── apps/
 │   ├── frontend/                 # Vue.js frontend app
@@ -79,7 +80,7 @@ monitoring-system/
 ├── scripts/                      # Development scripts
 ├── package.json                  # Root package.json
 └── README.md                     # Project overview
-
+```
 
 ## Quick Start
 
@@ -99,9 +100,132 @@ npm install
 
 # Install concurrently (to run frontend and backend together)
 npm install concurrently --save-dev
+```
 
-Build & Deployment
-Build for Production
+### Start Development Environment
+
+#### Option 1: One-Command Start (Recommended)
+```bash
+npm run dev
+```
+
+#### Option 2: PowerShell Script
+```powershell
+.\scripts\dev.ps1
+```
+
+#### Option 3: Start Separately
+```bash
+# Start backend (Terminal 1)
+cd apps/backend
+npm run dev
+
+# Start frontend (Terminal 2)
+cd apps/frontend
+npm run dev
+```
+
+### Access the Application
+- Frontend: http://localhost:5173  
+- Backend API: http://localhost:3000  
+- API Docs: http://localhost:3000/api-docs (if configured)  
+
+### Default Credentials
+- Username: `admin`  
+- Password: `123456`  
+
+## Configuration
+
+### Environment Variables
+
+#### Frontend (.env)
+```env
+VITE_API_URL=http://localhost:3000
+VITE_APP_TITLE=Employee Attendance and Vehicle Monitoring System
+```
+
+#### Backend (.env)
+```env
+PORT=3000
+JWT_SECRET=your-secret-key
+DATABASE_URL=./database.db
+```
+
+### Database
+The project uses SQLite. The database file and schema will be automatically created on first run.
+
+## API Documentation
+
+### Authentication
+- `POST /auth/login` – User login  
+- `POST /auth/logout` – User logout  
+- `GET /auth/profile` – Get user profile  
+
+### Employee Management
+- `GET /api/employees` – Get employee list  
+- `POST /api/employees` – Create employee  
+- `PUT /api/employees/:id` – Update employee  
+- `DELETE /api/employees/:id` – Delete employee  
+
+### Attendance Management
+- `GET /api/attendance` – Get attendance records  
+- `POST /api/attendance/checkin` – Check in  
+- `POST /api/attendance/checkout` – Check out  
+- `GET /api/attendance/qrcode` – Generate QR code for check-in  
+
+### Vehicle Management
+- `GET /api/vehicles` – Get vehicle list  
+- `POST /api/vehicles` – Add vehicle  
+- `PUT /api/vehicles/:id` – Update vehicle  
+- `GET /api/vehicles/:id/location` – Get vehicle location  
+
+### Statistics
+- `GET /api/statistics/dashboard` – Dashboard data  
+- `GET /api/statistics/attendance` – Attendance statistics  
+- `GET /api/statistics/vehicles` – Vehicle statistics  
+
+## Development Guide
+
+### Adding New Features
+1. Backend: Add new route in `apps/backend/routes/`  
+2. Frontend: Add new page in `apps/frontend/src/views/`  
+3. Update router configuration and navigation menu  
+
+### Database Operations
+```javascript
+// Example: query employees
+const employees = await db.all('SELECT * FROM employees WHERE status = ?', ['active']);
+```
+
+### Frontend State Management
+```typescript
+// Example using Pinia store
+import { useAuthStore } from '@/stores/auth'
+
+const authStore = useAuthStore()
+await authStore.login(credentials)
+```
+
+## Testing
+
+### Run Tests
+```bash
+# Frontend tests
+cd apps/frontend
+npm run test
+
+# Backend tests
+cd apps/backend
+npm run test
+```
+
+### Functional Testing
+Open `/test-frontend.html` to test frontend functionality.
+
+## Build & Deployment
+
+### Build for Production
+```bash
 # Build frontend
 cd apps/frontend
 npm run build
@@ -109,46 +233,36 @@ npm run build
 # Build backend (if necessary)
 cd apps/backend
 npm run build
+```
 
-Deployment Recommendations
+### Deployment Recommendations
+- Frontend: Deploy to CDN or static hosting  
+- Backend: Deploy to Node.js server  
+- Database: Migrate to production database (MySQL/PostgreSQL recommended)  
 
-Frontend: Deploy to CDN or static hosting
+## Contribution Guide
 
-Backend: Deploy to Node.js server
+1. Fork the repository  
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)  
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)  
+4. Push to the branch (`git push origin feature/AmazingFeature`)  
+5. Submit a Pull Request  
 
-Database: Migrate to production database (MySQL/PostgreSQL recommended)
+## License
 
-Contribution Guide
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
 
-Fork the repository
+## Issue Reporting
 
-Create a new branch (git checkout -b feature/AmazingFeature)
+If you encounter any issues, please submit them via **GitHub Issues** or contact the development team.
 
-Commit your changes (git commit -m 'Add some AmazingFeature')
+## Contact
 
-Push to the branch (git push origin feature/AmazingFeature)
+- Maintainer: **David Du**  
+- Email: **dupt321@gmail.com**  
+- Repository: https://github.com/DDuu123321/Intelligent-management-system
 
-Submit a Pull Request
+---
 
-License
-
-This project is licensed under the MIT License – see the LICENSE
- file for details.
-
-Issue Reporting
-
-If you encounter any issues, please submit them via GitHub Issues or contact the development team.
-
-Contact
-
-Maintainer: David Du
-
-Email: dupt321@gmail.com
-
-Repository: https://github.com/DDuu123321/Intelligent-management-system
-
-Last Updated: September 2, 2024
-Version: v1.0.0
-## Project Structure
-
-
+**Last Updated:** September 2, 2024  
+**Version:** v1.0.0
