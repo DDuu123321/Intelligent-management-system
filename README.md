@@ -55,6 +55,7 @@ A modern employee attendance and vehicle monitoring management system built with
 - IDE: VS Code  
 
 ## Project Structure
+
 monitoring-system/
 ├── apps/
 │   ├── frontend/                 # Vue.js frontend app
@@ -149,4 +150,5 @@ Repository: https://github.com/DDuu123321/Intelligent-management-system
 Last Updated: September 2, 2024
 Version: v1.0.0
 ## Project Structure
+
 
